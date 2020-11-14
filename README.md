@@ -1,4 +1,4 @@
 # Recon___
 
 ####This repo will consist of enumuration phase####
-====In text file there are some commadn that will make preety good recon====
+====In text file there are some command that will make preety good recon====
