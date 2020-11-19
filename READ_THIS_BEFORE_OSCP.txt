@@ -1,6 +1,7 @@
 ===Full TCP nmap====
 nmap -sSVC -A $IP -o nmap_scan.txt
 nmap -sV -sC -p- -o nmap.out -vvv $IP
+nmap -sV $IP
 
 ====UDP nmap======
 nmap -sU --top-ports 20 -o nmap-udp.out -vvv $RHOST
