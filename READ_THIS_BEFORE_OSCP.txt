@@ -84,7 +84,9 @@ In these instances, it’s a valuable skill to be able to effectively
 identify the web technology and have a webshell at hand that you can try (try Kali’s /usr/share/webshells
 =============================================================================
 
-
+===========After getting shell===============
+https://null-byte.wonderhowto.com/how-to/use-linux-smart-enumeration-discover-paths-privesc-0330807/
+==========================================
 ================check file system or user===========
 whoami /all
 id 
